@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab : CSS Grid</title>
+    <!-- Fonts Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- Styles & JS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/83f6a01cf7.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <section class="global-wrapper">
+        <header>
+            <h1>CSS Grid</h1>
+        </header>
+        <main>
+            <article class="references">
+                <h2>Références, documentations & Introduction</h2>
+                <ul>
+                    <li><a href="https://www.youtube.com/playlist?list=PL4-IK0AVhVjM41-Ezm5tmESVchNEi7aZU" target="_blank" title="Kévin Powell - Playlist autour de Grid Layout (ouverture dans une nouvelle fenêtre)"><i class="fab fa-youtube"></i> Kévin Powell - Playlist autour de Grid Layout</a></li>
+                    <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout#les_pistes" target="_blank" title="MDN - Les concepts de base des grilles CSS (nouvelle fenêtre)">MDN - Les concepts de base des grilles CSS</a></li>
+                    <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Grid_Layout" target="_blank" title="MDN - CSS Grid Layout (ouverture dans une nouvelle fenêtre)">MDN - Aperçu CSS Grid Layout</a></li>
+                    <li><a href="https://la-cascade.io/css-grid-layout-guide-complet/" target="_blank" title="Article sur la-cascade.io : CSS Grid Layout Guide Complet (nouvelle fenêtre)">Article sur la-cascade.io : CSS Grid Layout Guide Complet</a></li>
+                </ul>
+                <p>
+                    Le module <strong>CSS Grid Layout</strong> (<em>modèle de disposition en grille</em>) permet de créer des mises en pages en divisant l'espace d'affichage
+                    en régions utilisables.<br><br>
+                    Une grille c'est donc un ensemble de lignes horizontales et verticales sur lesquelles sont placés les éléments.
+                </p>
+            </article>
+            <article>
+                <h2>Lexique lié à CSS Grid Layout</h2>
+                <dl>
+                    <dt>Le conteneur</dt>
+                    <dd>
+                        Le conteneur est créé en déclarant la propriété <code>display:grid|inline-grid</code> sur un élément. Tous ses enfants
+                        directs deviennent alors des éléments de grille.
+                    </dd>
+
+                    <dt>Les pistes</dt>
+                    <dd>
+                        Les propriétés <code>grid-template-columns|rows</code> permettent de définir des colonnes et des rangées. Ce sont 
+                        ces colonnes et ces rangées qui définissent les pistes.<br>
+                        Par définition, une piste est donc l'espace entre deux lignes d'une grille.
+                    </dd>
+
+                    <dt>Grille implicite et grille explicite</dt>
+                    <dd>
+                        Lorsque l'on définie une grille uniquement à l'aide de la propriété <code>grid-template-columns</code> nous laissons la grille 
+                        créer les rangées.<br>
+                        Ce faisant, ces rangées dynamiquement créées font partie de la grille implicite. La grille explicite, quant à elle, est 
+                        formée à partir des pistes définies par les propriétés <code>grid-template-rows|columns</code>.
+                    </dd>
+
+                    <dt><a href="https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout#lignes_de_grille" target="_blank" title="Lignes de grille (nouvelle fenêtre)">Lignes de grille</a></dt>
+                    <dd>
+                        Lorsque l'on définit une grille à l'aide des propriétés <code>grid-template-rows|columns</code> on définit les pistes de la grille 
+                        et non les lignes qui en résultent.<br>
+                        La grille génère donc des lignes numérotées, que l'on peut nommer, que l'on utilise pour positionner les éléments.
+                    </dd>
+
+                    <dt>Les cellules</dt>
+                    <dd>
+                        Une cellule est la plus petite unité sur une grille.
+                    </dd>
+
+                    <dt>Les zones</dt>
+                    <dd>
+                        Un élément peut s'étendre sur plusieurs cellules d'une rangée ou d'une colonne, cela crée une zone.<br>
+                        Les zones ont pour obligation d'être rectangulaires, pas de formes exotiques. 
+                    </dd>
+
+                    <dt>Les gouttières</dt>
+                    <dd>
+                        Les gouttières entre les cellules sont définies à l'aide des propriétés <code>grid-[column|row]-gap</code> ou la propriété 
+                        raccourcie <code>grid-gap</code>.<br>
+                        Sur les navigateurs récents, le préfixe "grid-" n'est plus nécessaire.
+                    </dd>
+                </dl>
+            </article>
+            <article>
+                <h2>Une nouvelle unité de mesure, le 'fr'</h2>
+                <ul>
+                    <li><a href="https://css-tricks.com/introduction-fr-css-unit/" target="_blank" title="CSS Tricks : L'unité de mesure 'fr' (flexible lengths) (nouvelle fenêtre)">CSS Tricks : L'unité de mesure 'fr' (flexible lengths)</a></li>
+                    <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/flex_value" target="_blank" title="Le type de donnée CSS flex, l'unité 'fr' (nouvelle fenêtre)">Le type de donnée CSS flex, l'unité 'fr' (documentation en français)</a></li>
+                </ul>
+                <p>
+                    Avec l'arrivée du module de grille dans CSS,
+                    Nous pouvons voir l'utilisation d'une nouvelle unité de mesure <strong>fr</strong> signifiant <strong>fraction</strong>.<br>
+                    Elle représente une <strong>fr</strong>action (longueur flexible) de l'espace disponible dans le conteneur de la grille.<br><br>
+
+                    Ainsi, ci-dessus nous définissons une grille au format 3 colonnes / 2 lignes dont l'espace total va être réparti
+                    de manière égale entre chaque cellule.<br>
+                    Ce faisant la taille minimum d'une cellule correspondra à la taille de la plus grande cellule de toute la grille.
+                </p>
+            </article>
+            <article>
+                <h2>Propriétés display:grid et grid-auto-flow</h2>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/grid-auto-flow" target="_blank" title="Propriété grid-auto-flow (nouvelle fenêtre)" >Propriété grid-auto-flow</a></li>
+                    <li><a href="https://codepen.io/Wjumelle/pen/vYmBxVB" target="_blank" title="Codepen grid-auto-flow (nouvelle fenêtre)"><i class="fab fa-codepen"></i> Codepen : grid-auto-flow</a></li>
+                </ul>
+                <p>
+                    Le simple fait d'associer la propriété <code>grid-auto-flow: column|row</code> à un élément en <code>display: grid</code> va transformer l'affichage au 
+                    format grille et contrôler la façon dont fonctionne l'algorithme de placement automatique du modèle.<br><br>
+
+                    Il existe plusieurs valeurs/combinaison de valeurs possibles à <code>grid-auto-flow</code>.<br>
+                    Soit 1 valeur (<code>row|column|dense</code>) soit 2 valeurs (<code>row dense|column dense</code>).<br>
+                    Le mot-clé <strong>dense</strong> va indiquer à l'algorithme de placement d'utiliser une méthode de "regroupement dense" (similaire à Masonry) qui
+                    entraînera une impression de désordre qui s'expliquera tout simplement par la recherche du comblement des espaces vides.
+                </p>
+                <h3>Modèle de grille au format <strong>column</strong> (grid-auto-flow: column)</h3>
+                <div class="grid gridAutoFlow-column">
+                    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt vero laudantium qui debitis, laborum accusantium magni consequatur eos! Sint fugit magni quidem in velit repellendus vitae illum vero? Deleniti distinctio accusamus doloribus expedita quidem? Laudantium possimus vel fugiat odio ad quibusdam porro dolore! Corporis, expedita!</div>
+                    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis voluptates non maiores ipsam, ullam enim explicabo dolore quae repellendus ducimus iure, iusto quas blanditiis amet, vitae ipsa porro repellat reprehenderit officia similique expedita debitis cum sapiente! Suscipit alias cum debitis doloribus culpa sit fuga incidunt.</div>
+                    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error modi, nisi deleniti fugit voluptate ratione pariatur provident iure animi qui, repudiandae ullam quasi soluta reiciendis veniam vitae impedit tempore aliquam delectus harum atque. Minima veritatis atque quam magnam expedita voluptate ratione delectus veniam maxime explicabo.</div>
+                </div>
+                <h3>Modèle de grille au format <strong>row</strong> (grid-auto-flow: row)</h3>
+                <div class="grid gridAutoFlow-row">
+                    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt vero laudantium qui debitis, laborum accusantium magni consequatur eos! Sint fugit magni quidem in velit repellendus vitae illum vero? Deleniti distinctio accusamus doloribus expedita quidem? Laudantium possimus vel fugiat odio ad quibusdam porro dolore! Corporis, expedita!</div>
+                    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis voluptates non maiores ipsam, ullam enim explicabo dolore quae repellendus ducimus iure, iusto quas blanditiis amet, vitae ipsa porro repellat reprehenderit officia similique expedita debitis cum sapiente! Suscipit alias cum debitis doloribus culpa sit fuga incidunt.</div>
+                    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error modi, nisi deleniti fugit voluptate ratione pariatur provident iure animi qui, repudiandae ullam quasi soluta reiciendis veniam vitae impedit tempore aliquam delectus harum atque. Minima veritatis atque quam magnam expedita voluptate ratione delectus veniam maxime explicabo.</div>
+                </div>
+            </article>
+            <article>
+                <h2>Propriétés grid-template-rows|columns|areas et la propriété raccourcie grid-template</h2>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/grid-template-rows" target="_blank" title="grid-template-rows (nouvelle fenêtre)">Propriété grid-template-rows</a></li>
+                    <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/grid-template-columns" target="_blank" title="grid-template-columns (nouvelle fenêtre)">Propriété grid-template-columns</a></li>
+                    <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/grid-template-areas" target="_blank" title="Propriété grid-template-areas (nouvelle fenêtre)">Propriété grid-template-areas</a></li>
+                    <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/grid-template" target="_blank" title="Propriété raccourcie grid-template (nouvelle fenêtre)">Propriété raccourcie grid-template</a></li>
+                    <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/repeat()"target="_blank" title="MDN : Fonction repeat (nouvelle fenêtre)">MDN : Fonction repeat()</a></li>
+                    <li><a href="https://codepen.io/Wjumelle/pen/MWmgoNj" target="_blank" title="Codepen : grid-template-rows|columns (nouvelle fenêtre)"><i class="fab fa-codepen"></i> Codepen : grid-template-rows|columns</a></li>
+                </ul>
+                <p>
+                    Ici nous allons commencer à voir la véritable puissances de <strong>CSS Grid Layout</strong>.<br><br>
+
+                    Tout d'abord les propriétés <code>grid-template-rows</code> et <code>grid-template-columns</code>, elles permettent d'indiquer le comportement
+                    de nos lignes et de nos colonnes.<br>
+                    Elles fonctionnent de la façon suivante : <code>grid-template-rows: largeur-row1 largeur-row2</code> etc.., où <em>largeur-row1</em> peut être
+                    une <strong>longeur positive</strong> (<a href="https://developer.mozilla.org/fr/docs/Web/CSS/length" target="_blank" title="voir length (nouvelle fenêtre)">voir length</a>),
+                    un <strong>pourcentage</strong> (<a href="https://developer.mozilla.org/fr/docs/Web/CSS/percentage" target="_blank" title="voir percentage (nouvelle fenêtre)">voir percentage</a>), 
+                    une <strong>longueur flexible</strong> (<a href="https://developer.mozilla.org/fr/docs/Web/CSS/flex_value" target="_blank" title="voir flex (nouvelle fenêtre)">voir flex</a>), 
+                    un <strong>max ou min-content</strong>, un <strong>minmax(min,max)</strong> (<a href="https://developer.mozilla.org/fr/docs/Web/CSS/minmax()" target="_blank" title="voir la fonction minmax (nouvelle fenêtre)">voir la fonction minmax()</a>)
+                    le <strong>mot-clé auto</strong>, la fonction <strong>fit-content</strong> (<a href="https://developer.mozilla.org/fr/docs/Web/CSS/fit-content" target="_blank" title="voir fit-content (nouvelle fenêtre)">voir fit-content()</a>) 
+                    ou encore la fonction <strong>repeat</strong> (<a href="https://developer.mozilla.org/fr/docs/Web/CSS/repeat()" target="_blank" title="voir repeat (nouvelle fenêtre)">voir repeat()</a>).<br><br>
+
+                    <strong>repeat()</strong> va nous permettre de rapidement définir un template de grille.<br>
+                    La notation repeat() se comporte de la façon suivante : <code>repeat( position-integer, track-list )</code>.<br>
+                    Elle permet de gérer des grilles avec de nombreuses lignes|colonnes pour lesquelles on réutilise le même motif.
+                </p>
+                <span>Par exemple, dans l'exemple ci-après nous avons défini : </span>
+                <ul>
+                    <li><code>grid-template-rows: repeat(2, 1fr)</code> et </li>
+                    <li><code>grid-template-columns: repeat(3, 1fr)</code></li>
+                </ul>
+                <p>
+                    Nous aurions pu écrire la même chose avec des pourcentage, mais en utilisant ce type de valeurs le calcul se complexifie d'avantage.<br>
+                    En effet, il faut prendre en compte le cacul des marges internes à la grille (<em>gap</em>).
+                </p>
+                <div class="grid grid-template">
+                    <div>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda voluptas quas non, vero saepe earum nesciunt qui at unde commodi neque! Molestias assumenda reprehenderit voluptatibus?</div>
+                    <div>Odio quaerat praesentium natus voluptas repellendus alias, nobis consequatur voluptate inventore recusandae voluptates totam? Accusantium molestiae iure quaerat voluptate vel adipisci nisi quibusdam veniam quod! Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, dolor. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit, doloribus?</div>
+                    <div>Modi ipsum ab natus quis consequatur tenetur possimus deleniti amet neque eum, quisquam quasi itaque nam inventore asperiores numquam dolorum odit vel corrupti ipsa cupiditate?</div>
+                    <div>Illum consectetur optio dolorem natus temporibus? Sit maxime nesciunt repudiandae enim omnis consequatur dolorum dolore nostrum quisquam, inventore vitae! Ducimus, amet! Tenetur laudantium odio voluptate?</div>
+                    <div>Exercitationem minima tenetur iste natus nostrum quae deleniti sunt harum inventore, nihil ea totam voluptatum dolorum distinctio, ab optio, voluptas corrupti in. Aut, libero aliquam?</div>
+                    <div>Suscipit neque nobis, magnam, qui accusamus ad odio temporibus iure deserunt ipsa, pariatur cum ipsam deleniti distinctio ullam beatae sint quidem? Incidunt, praesentium? Delectus, fugiat.</div>
+                  </div>
+            </article>
+            <article>
+                <h2>Gestion des grilles implicite avec grid-auto-rows et grid-auto-columns</h2>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/grid-auto-rows" target="_blank" title="Propriété grid-auto-rows (nouvelle fenêtre)">Propriété grid-auto-rows</a></li>
+                    <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/grid-auto-columns" target="_blank" title="Propriété grid-auto-columns (nouvelle fenêtre)">Propriété grid-auto-columns</a></li>
+                </ul>
+                <p>
+                    Il existe 2 types de grilles : les grilles définies de manière explicite et les grilles définies de manière implicite.<br><br>
+
+                    Si un élément est placé en dehors de la grille ainsi définie, faute d'espace disponible, alors la grille ajoute implicitement 
+                    des colonnes et des rangées.<br>
+                    Les dimensions de ces pistes auront par défaut la valeur <strong>auto</strong>, elles s'ajusteront donc à leur contenu.<br><br>
+
+                    On peut contrôler le fonctionnement par défaut des pistes de la grille implicite via les propriétés <code>grid-auto-rows|columns</code>.
+                </p>
+            </article>
+        </main>
+        <footer>
+            Travaillé le 26/06/2021
+        </footer>
+    </section>
+</body>
+</html>
