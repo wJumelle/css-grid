@@ -126,7 +126,7 @@ header {
     padding: var(--padd-2);
 }
 
-/* part1 - grid auto flow */
+/* grid */
 .grid {
     display: grid;
     margin-bottom: var(--padd-2);
@@ -138,6 +138,7 @@ header {
     padding: var(--padd-1);
 }
 
+/* part1 - grid auto flow */
 .gridAutoFlow-column {
     grid-auto-flow: column;
 }
@@ -170,6 +171,43 @@ header {
     background-color: var(--clr-primary-dark);
     padding: var(--padd-1);
     color: var(--clr-primary-light);
+}
+
+/* part4 - grid-column et grid-row */
+.grid.grid-column-row {
+    /* grid-template-rows : repeat(2, 1fr);
+    grid-template-columns : repeat(3, 1fr);
+    grid-auto-rows: minmax(200px, auto); */
+}
+
+.grid.grid-column-row > * {
+    background-color: var(--clr-grey);
+    padding: var(--padd-1);
+}
+
+.grid-column-row > *:nth-child(1) {
+    grid-column: 1 / 3;
+}
+
+.grid-column-row > *:nth-child(2) {
+    grid-column-start: 3;
+    grid-row: 1 / 3;
+}
+
+.grid-column-row > *:nth-child(5) {
+    grid-column: 1 / 3;
+    grid-row: 3 / 5;
+}
+
+.grid-column-row > *:nth-child(7),
+.grid-column-row > *:nth-child(8) {
+    opacity: 50%;
+    grid-row-start: 4;
+    grid-column-start: 3;
+}
+
+.grid-column-row > *:nth-child(8) {
+    text-align: right;
 }
 
 /* footer */
