@@ -174,11 +174,11 @@ header {
 }
 
 /* part4 - grid-column et grid-row */
-.grid.grid-column-row {
-    /* grid-template-rows : repeat(2, 1fr);
+/*.grid.grid-column-row {
+     grid-template-rows : repeat(2, 1fr);
     grid-template-columns : repeat(3, 1fr);
-    grid-auto-rows: minmax(200px, auto); */
-}
+    grid-auto-rows: minmax(200px, auto); 
+}*/
 
 .grid.grid-column-row > * {
     background-color: var(--clr-grey);
