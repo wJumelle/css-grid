@@ -178,6 +178,7 @@
                 <ul>
                     <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/grid-auto-rows" target="_blank" title="Propriété grid-auto-rows (nouvelle fenêtre)">Propriété grid-auto-rows</a></li>
                     <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/grid-auto-columns" target="_blank" title="Propriété grid-auto-columns (nouvelle fenêtre)">Propriété grid-auto-columns</a></li>
+                    <li><a href="https://codepen.io/Wjumelle/pen/wvdaKvd" target="_blank" title="Codepen: grid-auto (nouvelle fenêtre)"><i class="fab fa-codepen" aria-hidden="true"></i> Codepen: grid-auto</a></li>
                 </ul>
                 <p>
                     Il existe 2 types de grilles : les grilles définies de manière explicite et les grilles définies de manière implicite.<br><br>
@@ -188,10 +189,45 @@
 
                     On peut contrôler le fonctionnement par défaut des pistes de la grille implicite via les propriétés <code>grid-auto-rows|columns</code>.
                 </p>
+                <p>
+                    Ici nous avons déclaré une grille de 3 colonnes et 2 rangées.<br>
+                    Comme le nombre d'élément inclus dans cette grille est supérieur à l'espace prévu (6 cellules), alors 
+                    le module CSS Grid Layout va créé pour nous une nouvelle rangée avec les 2 cellules restantes à placer.<br>
+                    La propriété <code>grid-auto-rows: minmax(200px, auto)</code> nous permet ainsi d'indiquer le comportement par défault
+                    de cette nouvelle rangée. Elle aura une hauteur minimale de 200px, et si elle dépasse cette hauteur minimale, elle s'adaptera 
+                    à la taille du contenu grâce à la valeur <strong>auto</strong>.<br><br>
+                    En CSS, nous avons ajouté la règle <code>.grid-audo > *:nth-child(n+7)</code> pour faire d'avantage ressortir ces cellules.
+                </p>
+                <div class="grid grid-auto">
+                    <div>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, porro!
+                    </div>
+                    <div>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, dicta.
+                    </div>
+                    <div>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam, quod.
+                    </div>
+                    <div>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, cumque.
+                    </div>
+                    <div>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, dolores.
+                    </div>
+                    <div>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, necessitatibus.
+                    </div>
+                    <div>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, tenetur!
+                    </div>
+                    <div>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, iusto.
+                    </div>
+                </div>
             </article>
         </main>
         <footer>
-            Travaillé le 26/06/2021
+            Travaillé le 01/07/2021
         </footer>
     </section>
 </body>
