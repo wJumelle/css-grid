@@ -33,8 +33,18 @@
                     en régions utilisables.<br><br>
                     Une grille c'est donc un ensemble de lignes horizontales et verticales sur lesquelles sont placés les éléments.
                 </p>
+                <h2>Sommaire</h2>
+                <ol>
+                    <li><a href="#lexique">Lexique lié à CSS Grid Layout</a></li>
+                    <li><a href="#nouvelle-unite-mesure">Une nouvelle unité de mesure, le 'fr'</a></li>
+                    <li><a href="#prop-disp-grid">Propriétés display:grid et grid-auto-flow</a></li>
+                    <li><a href="#prop-grid-template">Propriétés grid-template-rows|columns|areas et la propriété raccourcie grid-template</a></li>
+                    <li><a href="#grille-implicite">Gestion des grilles implicite avec grid-auto-rows et grid-auto-columns</a></li>
+                    <li><a href="#positionnement">Gestion des positionnement dans la grille avec grid-row-[start|end] et grid-column-[start|end]</a></li>
+                    <li><a href="#grille-imbriquee">Mise en place de grilles imbriquées</a></li>
+                </ol>
             </article>
-            <article>
+            <article id="lexique">
                 <h2>Lexique lié à CSS Grid Layout</h2>
                 <dl>
                     <dt>Le conteneur</dt>
@@ -80,11 +90,13 @@
                     <dd>
                         Les gouttières entre les cellules sont définies à l'aide des propriétés <code>grid-[column|row]-gap</code> ou la propriété 
                         raccourcie <code>grid-gap</code>.<br>
-                        Sur les navigateurs récents, le préfixe "grid-" n'est plus nécessaire.
+                        Sur les navigateurs récents, le préfixe "grid-" n'est plus nécessaire.<br>
+                        L'espace utilisé par les gouttières est pris en compte avant la répartition de l'espace entre les pistes définies 
+                        avec l'unité <strong>fr</strong>.
                     </dd>
                 </dl>
             </article>
-            <article>
+            <article id="nouvelle-unite-mesure">
                 <h2>Une nouvelle unité de mesure, le 'fr'</h2>
                 <ul>
                     <li><a href="https://css-tricks.com/introduction-fr-css-unit/" target="_blank" title="CSS Tricks : L'unité de mesure 'fr' (flexible lengths) (nouvelle fenêtre)">CSS Tricks : L'unité de mesure 'fr' (flexible lengths)</a></li>
@@ -100,7 +112,7 @@
                     Ce faisant la taille minimum d'une cellule correspondra à la taille de la plus grande cellule de toute la grille.
                 </p>
             </article>
-            <article>
+            <article id="prop-disp-grid">
                 <h2>Propriétés display:grid et grid-auto-flow</h2>
                 <ul>
                     <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/grid-auto-flow" target="_blank" title="Propriété grid-auto-flow (nouvelle fenêtre)" >Propriété grid-auto-flow</a></li>
@@ -128,7 +140,7 @@
                     <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error modi, nisi deleniti fugit voluptate ratione pariatur provident iure animi qui, repudiandae ullam quasi soluta reiciendis veniam vitae impedit tempore aliquam delectus harum atque. Minima veritatis atque quam magnam expedita voluptate ratione delectus veniam maxime explicabo.</div>
                 </div>
             </article>
-            <article>
+            <article id="prop-grid-template">
                 <h2>Propriétés grid-template-rows|columns|areas et la propriété raccourcie grid-template</h2>
                 <ul>
                     <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/grid-template-rows" target="_blank" title="grid-template-rows (nouvelle fenêtre)">Propriété grid-template-rows</a></li>
@@ -173,7 +185,7 @@
                     <div>Suscipit neque nobis, magnam, qui accusamus ad odio temporibus iure deserunt ipsa, pariatur cum ipsam deleniti distinctio ullam beatae sint quidem? Incidunt, praesentium? Delectus, fugiat.</div>
                   </div>
             </article>
-            <article>
+            <article id="grille-implicite">
                 <h2>Gestion des grilles implicite avec grid-auto-rows et grid-auto-columns</h2>
                 <ul>
                     <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/grid-auto-rows" target="_blank" title="Propriété grid-auto-rows (nouvelle fenêtre)">Propriété grid-auto-rows</a></li>
@@ -225,7 +237,7 @@
                     </div>
                 </div>
             </article>
-            <article>
+            <article id="positionnement">
                 <h2>Gestion des positionnement dans la grille avec grid-row-[start|end] et grid-column-[start|end]</h2>
                 <ul>
                     <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/grid-row-start" target="_blank" title="Propriété grid-row-start (nouvelle fenêtre)">Propriété grid-row-start</a> | <a href="https://developer.mozilla.org/fr/docs/Web/CSS/grid-row-end" target="_blank" title="Propriété grid-row-end (nouvelle fenêtre)">Propriété grid-row-end</a></li>
@@ -260,7 +272,8 @@
                     </li>
                     <li>
                         Enfin, nous superposons les zones 7 et 8 en leur définissant un placement identique <code>grid-column-start: 3</code> et 
-                        <code>grid-row-start: 4</code>.
+                        <code>grid-row-start: 4</code>.<br>
+                        La superposition de ces deux élément peut être gérer avec la propriété <code>z-index</code>.
                     </li>
                 </ul>
                 <p>
@@ -273,7 +286,7 @@
                 </p>
                 <p>
                     Ici notre template de grille n'est même pas déclaré à l'aide de <code>grid-template-columns|rows</code>, le placement des 
-                    zones suffit à le définir.
+                    zones suffit à le définir. Il est toutefois préférable et recommandé de déclarer le template de la grille en amont.
                 </p>
                 <div class="grid grid-column-row">
                     <div>1</div>
@@ -285,10 +298,49 @@
                     <div>7</div>
                     <div>8</div>
                 </div>
+                <div class="highlight highlight-tips">
+                    <p>
+                        Lors de la mise en place d'une grille complexe, il est intéressant de prévisualiser cette grille à l'aide d'outils 
+                        de développement, et quel meilleur outil que la console DevTools du navigateur ?<br>
+                        Tout comme pour le module Flexbox, les consoles des navigateurs récent ont intégrés ce genre d'outils pour faciliter 
+                        la bonne intégration du module.
+                    </p>
+                </div>
+            </article>
+            <article id="grille-imbriquee">
+                <h2>Mise en place de grilles imbriquées</h2>
+                <p>
+                    Un élément d'une grille peut tout à fait être une grille lui-même. Cela entraîne une toute petite particularité : 
+                    la définition de la grille ne fonctionnant que sur le parent et les enfants directs, si une grille est imbriquée elle n'héritera 
+                    pas de la configuration de la grille du parent.<br>
+                    Ce qui veut dire tout simplement que pour chaque grille imbriquée il faut définir une nouvelle configuration.
+                </p>
+                <div class="grid grid-outer">
+                    <div class="grid grid-nested">
+                        <div>A</div>
+                        <div>B</div>
+                        <div>C</div>
+                    </div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                    <div>6</div>
+                    <div>7</div>
+                    <div>8</div>
+                </div>
+                <div class="highlight highlight-experiment">
+                    <p>
+                        Actuellement en cours de validation pour la spécification de niveau 2 de CSS Grid, il existe une fonctionnalité 
+                        nommée <a href="https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout#sous-grille" target="_blank" title="Sous-grille (nouvelle fenêtre)">sous-grille</a>.<br>
+                        Elle permet de créer des grilles imbriquées héritant de la configuration de la grille parent.<br>
+                        Actuellement, aucun navigateur n'a implémenté la valeur <code>display: subgrid</code>.
+                    </p>
+                </div>
             </article>
         </main>
         <footer>
-            Travaillé le 01/07/2021
+            Travaillé le 02/07/2021
         </footer>
     </section>
 </body>

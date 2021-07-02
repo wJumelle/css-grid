@@ -27,11 +27,11 @@ html, body {
     padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6, ul, dl {
+h1, h2, h3, h4, h5, h6, ul, dl, ol {
     margin: 0;
 }
 
-ul {
+ul, ol {
     padding-left: 2rem;
 }
 
@@ -113,6 +113,44 @@ main > article {
     margin-bottom: var(--padd-2);
 }
 
+/* highlights */
+.highlight p {
+    background: var(--clr-grey);
+    padding: var(--padd-1);
+}
+
+.highlight code {
+    background: var(--clr-primary-light);
+}
+
+.highlight-tips,
+.highlight-experiment {
+    border-left: 1rem solid var(--clr-primary);
+}
+
+.highlight-warning {
+    border-left: 1rem solid var(--clr-secondary);
+}
+
+.highlight-tips p::before {
+    content: '💡';
+}
+
+.highlight-warning p::before {
+    content: '⚠';
+}
+
+.highlight-experiment p::before {
+    content: '🧪';
+}
+
+.highlight-tips p::before, 
+.highlight-warning p::before,
+.highlight-experiment p::before {
+    float: left;
+    margin-right: .5rem;
+}
+
 /* header */
 header {
     background: var(--clr-primary-light);
@@ -131,6 +169,10 @@ header {
     display: grid;
     margin-bottom: var(--padd-2);
     gap: 2rem;
+}
+
+.grid > .grid {
+    margin-bottom: 0;
 }
 
 .grid > *:nth-child(odd) {
@@ -208,6 +250,33 @@ header {
 
 .grid-column-row > *:nth-child(8) {
     text-align: right;
+}
+
+/* part5 grille imbriquées */
+.grid-outer {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+}
+
+.grid-outer > * {
+    background-color: var(--clr-grey);
+    padding: var(--padd-1);
+}
+
+.grid-outer > *:first-child,
+.grid-outer > *:last-child {
+    grid-column: 1 / 4;
+}
+
+.grid-outer .grid-nested {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+}
+
+.grid-outer .grid-nested > * {
+    background-color: var(--clr-primary-light);
+    padding: var(--padd-1);
 }
 
 /* footer */
