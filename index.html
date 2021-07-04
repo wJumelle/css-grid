@@ -38,7 +38,8 @@
                     <li><a href="#lexique">Lexique lié à CSS Grid Layout</a></li>
                     <li><a href="#nouvelle-unite-mesure">Une nouvelle unité de mesure, le 'fr'</a></li>
                     <li><a href="#prop-disp-grid">Propriétés display:grid et grid-auto-flow</a></li>
-                    <li><a href="#prop-grid-template">Propriétés grid-template-rows|columns|areas et la propriété raccourcie grid-template</a></li>
+                    <li><a href="#prop-grid-template-rows-columns">Propriétés grid-template-rows|columns</a></li>
+                    <li><a href="#prop-grid-template">Propriétés grid-template-areas, grid-area et la propriété raccourcie grid-template</a></li>
                     <li><a href="#grille-implicite">Gestion des grilles implicite avec grid-auto-rows et grid-auto-columns</a></li>
                     <li><a href="#positionnement">Gestion des positionnement dans la grille avec grid-row-[start|end] et grid-column-[start|end]</a></li>
                     <li><a href="#grille-imbriquee">Mise en place de grilles imbriquées</a></li>
@@ -140,13 +141,11 @@
                     <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error modi, nisi deleniti fugit voluptate ratione pariatur provident iure animi qui, repudiandae ullam quasi soluta reiciendis veniam vitae impedit tempore aliquam delectus harum atque. Minima veritatis atque quam magnam expedita voluptate ratione delectus veniam maxime explicabo.</div>
                 </div>
             </article>
-            <article id="prop-grid-template">
-                <h2>Propriétés grid-template-rows|columns|areas et la propriété raccourcie grid-template</h2>
+            <article id="prop-grid-template-rows-columns">
+                <h2>Propriétés grid-template-rows|columns</h2>
                 <ul>
                     <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/grid-template-rows" target="_blank" title="grid-template-rows (nouvelle fenêtre)">Propriété grid-template-rows</a></li>
                     <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/grid-template-columns" target="_blank" title="grid-template-columns (nouvelle fenêtre)">Propriété grid-template-columns</a></li>
-                    <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/grid-template-areas" target="_blank" title="Propriété grid-template-areas (nouvelle fenêtre)">Propriété grid-template-areas</a></li>
-                    <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/grid-template" target="_blank" title="Propriété raccourcie grid-template (nouvelle fenêtre)">Propriété raccourcie grid-template</a></li>
                     <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/repeat()"target="_blank" title="MDN : Fonction repeat (nouvelle fenêtre)">MDN : Fonction repeat()</a></li>
                     <li><a href="https://codepen.io/Wjumelle/pen/MWmgoNj" target="_blank" title="Codepen : grid-template-rows|columns (nouvelle fenêtre)"><i class="fab fa-codepen"></i> Codepen : grid-template-rows|columns</a></li>
                 </ul>
@@ -184,6 +183,47 @@
                     <div>Exercitationem minima tenetur iste natus nostrum quae deleniti sunt harum inventore, nihil ea totam voluptatum dolorum distinctio, ab optio, voluptas corrupti in. Aut, libero aliquam?</div>
                     <div>Suscipit neque nobis, magnam, qui accusamus ad odio temporibus iure deserunt ipsa, pariatur cum ipsam deleniti distinctio ullam beatae sint quidem? Incidunt, praesentium? Delectus, fugiat.</div>
                   </div>
+            </article>
+            <article id="prop-grid-template">
+                <h2>Propriétés grid-template-areas, grid-area et la propriété raccourcie grid-template</h2>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/grid-template-areas" target="_blank" title="Propriété grid-template-areas (nouvelle fenêtre)">Propriété grid-template-areas</a></li>
+                    <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/grid-template" target="_blank" title="Propriété raccourcie grid-template (nouvelle fenêtre)">Propriété raccourcie grid-template</a></li>
+                    <li><a href="https://codepen.io/Wjumelle/pen/VwbvNBz" target="_blank" title="Codepen : grid-template-areas, grid-area et grid-template (nouvelle fenêtre)"><i class="fab fa-codepen"></i> Codepen : grid-template-areas, grid-area et grid-template</a></li>
+                </ul>
+                <p>
+                    Les deux propriétés suivantes vont permettre de simplifier la mise en place des zones d'un template.<br>
+                    <code>grid-template-areas</code> et <code>grid-area</code> fonctionnent de paire.<br>
+                    L'une va permettre d'informer le module CSS Grid du nom des zones créées (<strong>grid-area</strong>) tandis que 
+                    l'autre permettra d'indiquer leur placement.<br>
+                    Ces deux-là associées à la propriété raccourcie <code>grid-template</code> vont permettre la mise en place 
+                    d'une grille complexe de manière très efficace et simple.
+                </p>
+                <p>
+                    Comme valeurs à la propriété <code>grid-area</code> nous devrons passer le nom de nos zones. Ici par exemple, 
+                    nous avons les zones : <strong>header</strong>, <strong>hero</strong>, <strong>content</strong>, <strong>sidebar</strong> et <strong>footer</strong>.<br>
+                    La propriété grid-area sera à définir sur le sélecteur de chacune des zones en question.
+                </p>
+                <p>
+                    Maintenant que nous avons nommé nos zones, nous pouvons définir leur placement sur la grille à l'aide de la propriété <code>grid-template-areas</code>.<br>
+                    Cette définition se réalise au niveau du sélecteur ciblant l'élément HTML de type <code>display:grid</code>.<br>
+                    Ici, nous avons défini un template sur 4 lignes et 4 colonnes.<br>
+                    Les 4 colonnes seront visibiles uniquement dans la partie "contenu" de notre template dans laquelle nous retrouverons : 
+                    nos zones <strong>content</strong> et <strong>aside</strong> puis 2 zones de blanc, afin de faire respirer le contenu.<br>
+                    Pour dire qu'une zone occupera l'espace des 4 colonnes, comme c'est le cas pour les zones <strong>header|hero|footer</strong>, nous allons écrire 
+                    <code>grid-template-areas: "header header header header"</code>.<br><br>
+                    Pour chaque nouvelle déclaration de rangée il suffira d'ouvrir une nouvelle paire de guillemets.<br>
+                    Ainsi, notre déclaration po
+                </p>
+                <div class="grid grid-areas">
+                    <div class="grid-header">header</div>
+                    <div class="grid-hero">hero</div>
+                    <div class="grid-content">
+                      <div class="grid-elem">La joie des zones avec grid !</div>
+                    </div>
+                    <div class="grid-aside">sidebar</div>
+                    <div class="grid-footer">footer</div>
+                </div>
             </article>
             <article id="grille-implicite">
                 <h2>Gestion des grilles implicite avec grid-auto-rows et grid-auto-columns</h2>

@@ -55,6 +55,7 @@ dt {
 dd {
     margin-left: 0px;
     margin-bottom: var(--padd-1);
+    max-width: 80ch;
 }
 
 code {
@@ -201,7 +202,41 @@ header {
   grid-gap : 2rem;
 }
 
-/* part3 - grid auto rows | columns */
+/* part3 - grid template areas et propriété raccourci */
+.grid-areas {
+    grid-template: 
+        "header header header header" 1fr
+        "hero hero hero hero" 2fr
+        ". content aside ." 1fr
+        "footer footer footer footer" 1fr / 1fr 5fr 2fr 1fr;
+}
+
+.grid-areas > * {
+    background-color: var(--clr-grey);
+    padding: var(--padd-1);
+}
+
+.grid-header {
+    grid-area: header;
+}
+
+.grid-hero {
+    grid-area : hero;
+}
+
+.grid-content {
+    grid-area: content;
+}
+
+.grid-aside {
+    grid-area: aside;
+}
+
+.grid-footer {
+    grid-area: footer;
+}
+
+/* part4 - grid auto rows | columns */
 .grid-auto {
     grid-template-rows : repeat(2, 1fr);
     grid-template-columns : repeat(3, 1fr);
@@ -215,7 +250,7 @@ header {
     color: var(--clr-primary-light);
 }
 
-/* part4 - grid-column et grid-row */
+/* part5 - grid-column et grid-row */
 /*.grid.grid-column-row {
      grid-template-rows : repeat(2, 1fr);
     grid-template-columns : repeat(3, 1fr);
@@ -252,7 +287,7 @@ header {
     text-align: right;
 }
 
-/* part5 grille imbriquées */
+/* part6 - grille imbriquées */
 .grid-outer {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, 1fr);
